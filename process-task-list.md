@@ -11,8 +11,30 @@ Guidelines for managing task lists in markdown files to track progress on comple
 
 ## Task Implementation
 - **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
-- **Completion protocol:**  
-  1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.
+
+## Task Verification Requirements
+**CRITICAL: DO NOT mark any task as done `[x]` without concrete evidence**
+
+Before marking any task complete, you MUST:
+1. **Show proof of implementation:** Display the actual code/changes made
+2. **Demonstrate it works:** Run the code, show output, or test results
+3. **Verify no errors:** Check for compilation errors, linting issues, type errors
+4. **Explain what you verified:** Explicitly state what you tested and what the results were
+
+**Examples of required evidence:**
+- For UI changes: Show the component renders without errors
+- For API endpoints: Make a test request and show the response
+- For functions: Run the function with test inputs and show outputs
+- For database changes: Query the database and show the schema/data
+- For configurations: Show the config loads and applies correctly
+
+**If you cannot provide evidence, DO NOT mark as complete.** Instead:
+- Keep the task as `[ ]`
+- Explain what's blocking verification
+- Ask the user for help if needed
+
+- **Completion protocol:**
+  1. When you finish a **sub‑task** AND have verified it works with evidence, mark it as completed by changing `[ ]` to `[x]`.
   2. If **all** subtasks underneath a parent task are now `[x]`, follow this sequence:
     - **First**: Run the full test suite (`pytest`, `npm test`, `bin/rails test`, etc.)
     - **Only if all tests pass**: Stage changes (`git add .`)
