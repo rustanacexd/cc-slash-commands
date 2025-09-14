@@ -4,6 +4,14 @@
 
 To guide an AI assistant in creating a detailed Product Requirements Document (PRD) in Markdown format, based on an recent chat history (we did planning first so read that). The PRD should be clear, actionable, and suitable for a junior developer to understand and implement the feature.
 
+## Design Principles
+
+- **Simplicity First:** Always prefer the simplest solution that meets the requirements
+- **YAGNI (You Aren't Gonna Need It):** Don't add functionality until it's actually needed
+- **MVP Focus:** Start with the minimum viable implementation
+- **Avoid premature abstractions:** Don't create abstractions for single use cases
+- **Leverage existing solutions:** Use built-in features and existing libraries before creating custom solutions
+
 ## Process
 
 1.  **Receive Initial Prompt:** The user provides a brief description or request for a new feature or functionality.

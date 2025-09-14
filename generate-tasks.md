@@ -19,6 +19,14 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 5. **Inform the user:** Present these tasks to the user in the specified format (without sub-tasks yet) For example, say "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed." . 
 6.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
 7.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Ensure sub-tasks logically follow from the parent task, cover the implementation details implied by the PRD, and consider existing codebase patterns where relevant without being constrained by them.
+
+    **Anti-Overengineering Guidelines for Sub-Tasks:**
+    - Prefer direct implementation over creating new abstractions
+    - Avoid creating unnecessary interfaces, factories, or design patterns
+    - Start with inline code before extracting to separate functions/files
+    - Don't create configuration files unless there are multiple environments
+    - Limit layers of indirection (max 2-3 levels)
+    - Use existing framework features instead of custom implementations
 8.  **Identify Relevant Files:** Based on the tasks and PRD, identify potential files that will need to be created or modified. List these under the `Relevant Files` section, including corresponding test files if applicable.
 9.  **Generate Final Output:** Combine the parent tasks, sub-tasks, relevant files, and notes into the final Markdown structure.
 10.  **Save Task List:** Save the generated document in the `/tasks/` directory with the filename `tasks-[prd-file-name].md`, where `[prd-file-name]` matches the base name of the input PRD file (e.g., if the input was `prd-user-profile-editing.md`, the output is `tasks-prd-user-profile-editing.md`).

@@ -2,6 +2,13 @@
 
 Guidelines for managing task lists in markdown files to track progress on completing a PRD
 
+## Implementation Principles
+- **Start simple:** Write the most straightforward code that works
+- **No premature optimization:** Make it work, then make it better if needed
+- **Inline first:** Keep code in the same file until it needs to be shared
+- **Avoid unnecessary patterns:** No factories, builders, or decorators unless truly needed
+- **Use framework defaults:** Don't customize what already works
+
 ## Task Implementation
 - **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
 - **Completion protocol:**  
