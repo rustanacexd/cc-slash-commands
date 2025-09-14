@@ -27,6 +27,9 @@ Before marking any task complete, you MUST:
 - For functions: Run the function with test inputs and show outputs
 - For database changes: Query the database and show the schema/data
 - For configurations: Show the config loads and applies correctly
+- For cleanup tasks: Show `ls` output proving temporary files are gone
+- For cleanup tasks: Run grep/search to confirm no debug statements remain
+- For cleanup tasks: Show git status to confirm only intended files are staged
 
 **If you cannot provide evidence, DO NOT mark as complete.** Instead:
 - Keep the task as `[ ]`
@@ -38,7 +41,13 @@ Before marking any task complete, you MUST:
   2. If **all** subtasks underneath a parent task are now `[x]`, follow this sequence:
     - **First**: Run the full test suite (`pytest`, `npm test`, `bin/rails test`, etc.)
     - **Only if all tests pass**: Stage changes (`git add .`)
-    - **Clean up**: Remove any temporary files and temporary code before committing
+    - **Clean up Development Artifacts**:
+      1. List all temporary files created during this task
+      2. Remove each temporary file with confirmation (debug scripts, research files, etc.)
+      3. Search for and remove debug statements (console.log, print, debugger)
+      4. Remove commented-out experimental code
+      5. Verify no .env.local, .env.test or temporary configs remain
+      6. Show proof of cleanup (ls output, grep results showing no debug statements)
     - **Commit**: Use a descriptive commit message that:
       - Uses conventional commit format (`feat:`, `fix:`, `refactor:`, etc.)
       - Summarizes what was accomplished in the parent task

@@ -27,6 +27,16 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
     - Don't create configuration files unless there are multiple environments
     - Limit layers of indirection (max 2-3 levels)
     - Use existing framework features instead of custom implementations
+
+    **Cleanup Task Generation:**
+    - Always include a "Cleanup development artifacts" sub-task as the LAST item before commit for each parent task
+    - This cleanup task should specify:
+      - Remove debug/test scripts created during development
+      - Remove research/analysis files
+      - Clean up console.log/print statements added for debugging
+      - Remove commented-out experimental code
+      - Delete temporary test data files
+      - Remove any POC files not part of final solution
 8.  **Identify Relevant Files:** Based on the tasks and PRD, identify potential files that will need to be created or modified. List these under the `Relevant Files` section, including corresponding test files if applicable.
 9.  **Generate Final Output:** Combine the parent tasks, sub-tasks, relevant files, and notes into the final Markdown structure.
 10.  **Save Task List:** Save the generated document in the `/tasks/` directory with the filename `tasks-[prd-file-name].md`, where `[prd-file-name]` matches the base name of the input PRD file (e.g., if the input was `prd-user-profile-editing.md`, the output is `tasks-prd-user-profile-editing.md`).
