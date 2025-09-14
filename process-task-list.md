@@ -27,6 +27,10 @@ Before marking any task complete, you MUST:
 - For functions: Run the function with test inputs and show outputs
 - For database changes: Query the database and show the schema/data
 - For configurations: Show the config loads and applies correctly
+- For validation tasks: Show PRD requirements checklist with each item verified
+- For validation tasks: Demonstrate feature working with multiple test cases
+- For validation tasks: Show automated test results passing
+- For validation tasks: Provide screenshots/output proving edge cases work
 - For cleanup tasks: Show `ls` output proving temporary files are gone
 - For cleanup tasks: Run grep/search to confirm no debug statements remain
 - For cleanup tasks: Show git status to confirm only intended files are staged
@@ -35,6 +39,25 @@ Before marking any task complete, you MUST:
 - Keep the task as `[ ]`
 - Explain what's blocking verification
 - Ask the user for help if needed
+
+## Validation Sub-Task Requirements
+**For "Review and validate implementation" sub-tasks specifically:**
+
+Before marking validation task complete, you MUST:
+1. **Create a checklist** from the PRD requirements for this parent task
+2. **Test each requirement** with actual execution/demonstration
+3. **Document test results** with specific inputs and outputs
+4. **Test edge cases** like empty inputs, invalid data, boundary values
+5. **Run automated tests** and show passing results
+6. **Compare implementation** against PRD specifications line by line
+7. **Verify no regressions** by testing related existing functionality
+
+**DO NOT mark validation task complete without showing:**
+- ✅ Each PRD requirement checked off with evidence
+- ✅ Multiple test scenarios with results
+- ✅ Edge case handling demonstration
+- ✅ Test suite passing
+- ✅ Explicit statement: "All PRD requirements for [parent task] are verified and working"
 
 - **Completion protocol:**
   1. When you finish a **sub‑task** AND have verified it works with evidence, mark it as completed by changing `[ ]` to `[x]`.

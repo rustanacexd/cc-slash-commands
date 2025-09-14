@@ -28,6 +28,17 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
     - Limit layers of indirection (max 2-3 levels)
     - Use existing framework features instead of custom implementations
 
+    **Validation Task Generation:**
+    - Always include a "Review and validate implementation" sub-task as the SECOND-TO-LAST item for each parent task (before cleanup)
+    - This validation task MUST include checks for:
+      - Verify all PRD requirements for this task are met
+      - Test the feature/functionality manually with different inputs
+      - Check edge cases and error scenarios
+      - Confirm error handling works correctly
+      - Validate UI/UX matches PRD specifications (if applicable)
+      - Run automated tests and ensure they pass
+      - Verify no regressions in existing functionality
+
     **Cleanup Task Generation:**
     - Always include a "Cleanup development artifacts" sub-task as the LAST item before commit for each parent task
     - This cleanup task should specify:
