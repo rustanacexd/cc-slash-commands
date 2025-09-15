@@ -1,4 +1,5 @@
 # Rule: Generating a Product Requirements Document (PRD)
+# Purpose: Template for creating detailed PRDs from prompts or chat history with clarifying questions
 
 ## Goal
 

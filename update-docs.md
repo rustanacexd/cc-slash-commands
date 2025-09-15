@@ -1,4 +1,5 @@
 # Update Documentation
+# Purpose: Template for systematically reviewing and updating all project documentation
 
 Systematically review and update all documentation files in this project. Your goal is to ensure documentation is current, accurate, and valuable.
 

@@ -1,4 +1,5 @@
 # Task List Management
+# Purpose: Template for executing task lists with strict verification and evidence requirements
 
 Guidelines for managing task lists in markdown files to track progress on completing a PRD
 

@@ -1,4 +1,5 @@
 # Rule: Creating Git Commits
+# Purpose: Template for creating clean, professional git commits with specific author conventions
 
 ## Goal
 

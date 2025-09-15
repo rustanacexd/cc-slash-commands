@@ -1,4 +1,5 @@
 # Rule: Generating a Task List from a PRD
+# Purpose: Template for converting PRDs into actionable task lists with parent tasks and sub-tasks
 
 ## Goal
 
