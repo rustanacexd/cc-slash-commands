@@ -22,9 +22,39 @@ The PRD should be clear, actionable, and suitable for a junior developer to unde
 1.  **Gather Context:**
     - If command includes a prompt (e.g., `/create-prd "feature description"`), use that as the initial context
     - If no prompt provided, analyze the last 10 messages from chat history to extract feature requirements
-2.  **Ask Clarifying Questions:** Before writing the PRD, the AI *must* ask clarifying questions to gather sufficient detail. The goal is to understand the "what" and "why" of the feature, not necessarily the "how" (which the developer will figure out). Make sure to provide options in letter/number lists so I can respond easily with my selections.
-3.  **Generate PRD:** Based on the context (command prompt or chat history) and the user's answers to the clarifying questions, generate a PRD using the structure outlined below.
-4.  **Save PRD:** Save the generated document as `prd-[feature-name].md` inside the `/tasks` directory.
+    - **Deep Analysis:** Think deeply about the underlying business problem, user needs, and system implications
+
+2.  **Deep Thinking (Ultrathink) Before Questions:**
+    Before asking questions, think deeply about:
+    - What is the real problem being solved?
+    - Who are all the stakeholders affected?
+    - What are the technical and business constraints?
+    - What are potential risks and edge cases?
+    - What similar features exist and what can we learn from them?
+    - What are the long-term implications of this feature?
+    - What assumptions are being made?
+
+3.  **Ask Clarifying Questions:** Before writing the PRD, the AI *must* ask clarifying questions to gather sufficient detail. The goal is to understand the "what" and "why" of the feature, not necessarily the "how" (which the developer will figure out). Make sure to provide options in letter/number lists so I can respond easily with my selections.
+
+4.  **Deep Analysis of Answers:**
+    After receiving answers, deeply analyze:
+    - Contradictions or conflicts in requirements
+    - Hidden dependencies or prerequisites
+    - Unstated assumptions that need validation
+    - Potential scalability issues
+    - Security and privacy implications
+    - Performance impact on existing systems
+    - User experience considerations
+    - Integration challenges
+
+5.  **Generate PRD:** Based on the context (command prompt or chat history) and the user's answers to the clarifying questions, generate a PRD using the structure outlined below. Apply deep thinking to ensure requirements are:
+    - Complete and unambiguous
+    - Testable and measurable
+    - Achievable and realistic
+    - Consistent and non-conflicting
+    - Traceable to business goals
+
+6.  **Save PRD:** Save the generated document as `prd-[feature-name].md` inside the `/tasks` directory.
 
 ## Clarifying Questions (Examples)
 

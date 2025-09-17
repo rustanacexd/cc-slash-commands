@@ -10,17 +10,45 @@ Guidelines for managing task lists in markdown files to track progress on comple
 - **Avoid unnecessary patterns:** No factories, builders, or decorators unless truly needed
 - **Use framework defaults:** Don't customize what already works
 
-## Task Implementation
+## Task Implementation with Deep Analysis
 - **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
 
-## Task Verification Requirements
-**CRITICAL: DO NOT mark any task as done `[x]` without concrete evidence**
+### Before Starting Each Task (Ultrathink):
+Think deeply about:
+- **Understanding:** Do I fully understand what this task requires?
+- **Approach:** What are the possible approaches and which is best?
+- **Dependencies:** What needs to be in place for this to work?
+- **Impact:** How will this change affect the rest of the system?
+- **Risks:** What could go wrong during implementation?
+- **Testing:** How will I verify this works correctly?
+
+## Task Verification Requirements with Deep Analysis
+**CRITICAL: DO NOT mark any task as done `[x]` without concrete evidence AND deep verification**
 
 Before marking any task complete, you MUST:
+
 1. **Show proof of implementation:** Display the actual code/changes made
-2. **Demonstrate it works:** Run the code, show output, or test results
-3. **Verify no errors:** Check for compilation errors, linting issues, type errors
-4. **Explain what you verified:** Explicitly state what you tested and what the results were
+
+2. **Deep Verification (Ultrathink):**
+   - **Correctness:** Does this solve the intended problem?
+   - **Completeness:** Are all aspects of the task addressed?
+   - **Edge Cases:** Have I handled all edge cases?
+   - **Integration:** Does this work with existing code?
+   - **Performance:** Will this perform acceptably?
+   - **Security:** Are there any security implications?
+   - **Maintainability:** Is this code maintainable?
+
+3. **Demonstrate it works:** Run the code, show output, or test results
+
+4. **Verify no errors:** Check for compilation errors, linting issues, type errors
+
+5. **Explain what you verified:** Explicitly state what you tested and what the results were
+
+6. **Deep Reflection:**
+   - What assumptions did I make?
+   - What could still go wrong?
+   - What follow-up work might be needed?
+   - What did I learn from this task?
 
 **Examples of required evidence:**
 - For UI changes: Show the component renders without errors
@@ -41,8 +69,18 @@ Before marking any task complete, you MUST:
 - Explain what's blocking verification
 - Ask the user for help if needed
 
-## Validation Sub-Task Requirements
+## Validation Sub-Task Requirements with Deep Analysis
 **For "Review and validate implementation" sub-tasks specifically:**
+
+### Deep Pre-Validation Thinking (Ultrathink):
+Before validating, think deeply about:
+- **Success Criteria:** What defines success for this implementation?
+- **Failure Modes:** How could this fail in production?
+- **User Scenarios:** How will real users interact with this?
+- **System Load:** How will this behave under stress?
+- **Data Integrity:** Could this corrupt or lose data?
+- **Backward Compatibility:** Does this break existing functionality?
+- **Future Maintenance:** Will future developers understand this?
 
 Before marking validation task complete, you MUST:
 1. **Create a checklist** from the PRD requirements for this parent task
@@ -52,6 +90,16 @@ Before marking validation task complete, you MUST:
 5. **Run automated tests** and show passing results
 6. **Compare implementation** against PRD specifications line by line
 7. **Verify no regressions** by testing related existing functionality
+
+### Deep Validation Analysis (Ultrathink):
+During validation, deeply consider:
+- **Real-World Usage:** Test with realistic data and scenarios
+- **Stress Testing:** What happens at scale or under load?
+- **Error Recovery:** How does it handle and recover from errors?
+- **User Experience:** Is it intuitive and user-friendly?
+- **Performance:** Are there any performance bottlenecks?
+- **Security:** Are there any vulnerabilities?
+- **Monitoring:** Can we detect if something goes wrong?
 
 **DO NOT mark validation task complete without showing:**
 - ✅ Each PRD requirement checked off with evidence

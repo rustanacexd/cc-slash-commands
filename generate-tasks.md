@@ -14,12 +14,46 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 ## Process
 
 1.  **Receive PRD Reference:** The user points the AI to a specific PRD file
-2.  **Analyze PRD:** The AI reads and analyzes the functional requirements, user stories, and other sections of the specified PRD.
-3.  **Assess Current State:** Review the existing codebase to understand existing infrastructre, architectural patterns and conventions. Also, identify any existing components or features that already exist and could be relevant to the PRD requirements. Then, identify existing related files, components, and utilities that can be leveraged or need modification.
-4.  **Phase 1: Generate Parent Tasks:** Based on the PRD analysis and current state assessment, create the file and generate the main, high-level tasks required to implement the feature. Use your judgement on how many high-level tasks to use. It's likely to be about 
-5. **Inform the user:** Present these tasks to the user in the specified format (without sub-tasks yet) For example, say "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed." . 
-6.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
-7.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Ensure sub-tasks logically follow from the parent task, cover the implementation details implied by the PRD, and consider existing codebase patterns where relevant without being constrained by them.
+
+2.  **Deep Analysis of PRD (Ultrathink):**
+    Before breaking down tasks, think deeply about:
+    - **Core Requirements:** What are the essential vs nice-to-have features?
+    - **Hidden Complexity:** What complexity is not immediately obvious?
+    - **Dependencies:** What must be built first for other things to work?
+    - **Risk Areas:** Which parts are most likely to have issues?
+    - **Integration Points:** How will this interact with existing systems?
+    - **Data Flow:** How will data move through the system?
+    - **State Management:** What state needs to be tracked and where?
+    - **Error Scenarios:** What can go wrong and how should it be handled?
+    - **Performance Bottlenecks:** Where might performance issues arise?
+    - **Security Vulnerabilities:** What attack vectors need consideration?
+
+3.  **Assess Current State:** Review the existing codebase to understand existing infrastructure, architectural patterns and conventions. Also, identify any existing components or features that already exist and could be relevant to the PRD requirements. Then, identify existing related files, components, and utilities that can be leveraged or need modification.
+
+4.  **Deep Task Planning (Ultrathink):**
+    Before creating tasks, deeply consider:
+    - **Logical Sequence:** What's the optimal order of implementation?
+    - **Parallel Work:** What can be done simultaneously?
+    - **Critical Path:** What tasks block others?
+    - **Testing Strategy:** How will each piece be tested?
+    - **Incremental Delivery:** Can we deliver value incrementally?
+    - **Rollback Plan:** How can changes be safely reversed?
+    - **Migration Needs:** Do we need to migrate existing data/functionality?
+
+5.  **Phase 1: Generate Parent Tasks:** Based on the PRD analysis and current state assessment, create the file and generate the main, high-level tasks required to implement the feature. Use your judgement on how many high-level tasks to use.
+
+6. **Inform the user:** Present these tasks to the user in the specified format (without sub-tasks yet) For example, say "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
+
+7.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
+
+8.  **Phase 2: Generate Sub-Tasks with Deep Analysis:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks. For each sub-task, think deeply about:
+    - **Necessity:** Is this sub-task truly needed or is it over-engineering?
+    - **Completeness:** Will this sub-task fully address its parent task?
+    - **Dependencies:** What must be done before this sub-task?
+    - **Validation:** How will we know this sub-task is done correctly?
+    - **Edge Cases:** What edge cases must this sub-task handle?
+    - **Time Estimate:** How complex is this sub-task really?
+    - **Risk Level:** What could go wrong with this sub-task?
 
     **Anti-Overengineering Guidelines for Sub-Tasks:**
     - Prefer direct implementation over creating new abstractions
