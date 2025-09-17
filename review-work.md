@@ -20,6 +20,22 @@ The command automatically resolves related files:
 - Task file: `tasks-prd-[feature-name].md` (automatically deduced)
 - Both files are expected in the `/tasks/` directory
 
+## ⚠️ CRITICAL ANTI-HALLUCINATION RULES ⚠️
+
+**YOU MUST NOT:**
+- Claim tasks are complete without verifying
+- Assume tests pass without running them
+- Report success without evidence
+- Skip actual execution of validation
+- Imagine or predict outcomes
+
+**YOU MUST:**
+- Actually run all tests and read outputs
+- Actually execute code to verify it works
+- Actually check for broken references (cache_data, undefined variables)
+- Report failures honestly and specifically
+- Show real command outputs, not imagined ones
+
 ## Review Process
 
 ### Phase 1: Context Gathering
@@ -39,7 +55,10 @@ The command automatically resolves related files:
 3. **Analyze Work Done:**
    - Review git history for related commits
    - Identify all files created or modified
-   - Check test results and coverage
+   - **ACTUALLY RUN** the test suite and **READ** the output
+   - **VERIFY** tests are passing (not assume)
+   - **SEARCH** for broken references (grep for cache_data, undefined vars)
+   - Check actual test coverage numbers
    - Review any documentation created
 
 ### Phase 2: Deep Analysis (Ultrathinking)
@@ -59,9 +78,16 @@ For **EACH** PRD requirement and task item, perform thorough analysis:
 **For each task in the task list:**
 - **Task Status:** Is it marked complete?
 - **Evidence:** What proof exists of completion?
+  - **MANDATORY:** Show actual test output
+  - **MANDATORY:** Show linting results
+  - **MANDATORY:** Show type checking results
+  - **MANDATORY:** Demonstrate feature working
 - **Quality:** How well was it executed?
 - **Dependencies:** Were prerequisite tasks completed first?
-- **Testing:** Was it properly tested and validated?
+- **Testing:**
+  - **RUN THE TESTS NOW** - Do not rely on past results
+  - Show the actual output
+  - If tests fail, mark task as INCOMPLETE
 
 #### C. Cross-Reference Check
 - **Coverage:** Does every PRD requirement have corresponding tasks?
@@ -93,8 +119,17 @@ Present findings in this structured format:
 ### Requirement #1: [Requirement from PRD]
 **Status:** [✅ COMPLETE | ⚠️ PARTIAL | ❌ INCOMPLETE]
 **Implementation:** [How it was implemented]
-**Evidence:** [Test results, code references, demos]
-**Issues:** [Any problems found]
+**Evidence:**
+  - **Test Results:** [ACTUAL output from running tests NOW]
+  - **Live Demo:** [ACTUAL execution showing it works]
+  - **Code Location:** [file:line_number references]
+  - **Verification Commands Run:**
+    ```bash
+    # Show the ACTUAL commands you ran and their output
+    npm test
+    # [paste actual output here]
+    ```
+**Issues:** [Any problems found - BE HONEST about failures]
 **Deep Analysis:**
 - Does it fully meet the requirement? [Yes/No + explanation]
 - Edge cases handled? [List of cases + status]
@@ -111,10 +146,22 @@ Present findings in this structured format:
 
 #### Sub-task 1.1: [Sub-task Name]
 **Marked Complete:** [Yes/No]
-**Verified:** [Yes/No]
-**Evidence:** [What proves it's done]
+**Actually Complete:** [Yes/No - based on YOUR verification NOW]
+**Verification Performed:**
+  ```bash
+  # Commands you ran to verify (not from memory, run them NOW)
+  npm test -- --grep "relevant test"
+  # [ACTUAL output]
+  ```
+**Evidence:**
+  - Tests passing: [Show output]
+  - Feature working: [Show execution]
+  - No broken code: [Show grep results for cache_data, etc.]
 **Quality Score:** [1-10]
-**Analysis:** [Deep thoughts on implementation quality]
+**Honesty Check:**
+  - Did I actually run tests? [Yes/No]
+  - Did they actually pass? [Yes/No]
+  - Any broken references? [Yes/No]
 
 [Repeat for each sub-task...]
 
@@ -199,6 +246,17 @@ After detailed review, provide:
    **Ready for sign-off:** [YES/NO]
    **Conditions:** [If no, what needs to be done]
 
+## 🚨 FINAL HALLUCINATION PREVENTION CHECK 🚨
+
+Before submitting your review:
+1. **Did you ACTUALLY run the tests?** (Not remember/assume)
+2. **Did you SEE them pass?** (Not imagine)
+3. **Did you SEARCH for broken code?** (grep for cache_data, etc.)
+4. **Are you reporting REAL outputs?** (Not predicted)
+5. **Are you being HONEST about failures?** (Not hiding issues)
+
+If ANY answer is "no", START OVER and do it properly.
+
 ## AI Instructions
 
 When executing this review command:
@@ -224,10 +282,23 @@ When executing this review command:
    - **System perspective:** Does this fit the architecture?
 
 4. **Evidence-Based Review:**
-   - Always show actual code/test results
+   - **MANDATORY:** Run tests NOW and show output
+   - **MANDATORY:** Execute code NOW and show results
+   - **MANDATORY:** Search for broken refs NOW (cache_data, undefined)
+   - Always show actual code/test results (not remembered)
    - Reference specific file:line_number
-   - Include command outputs where relevant
+   - Include command outputs (freshly executed)
    - Show before/after comparisons
+
+   **Verification Checklist (DO NOT SKIP):**
+   - [ ] Ran full test suite
+   - [ ] All tests passed
+   - [ ] Ran linting
+   - [ ] No lint errors
+   - [ ] Ran type checking
+   - [ ] No type errors
+   - [ ] Searched for broken references
+   - [ ] No cache_data or undefined variables found
 
 5. **Be Critical but Constructive:**
    - Point out issues honestly

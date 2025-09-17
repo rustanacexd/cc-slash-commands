@@ -25,6 +25,21 @@ Think deeply about:
 ## Task Verification Requirements with Deep Analysis
 **CRITICAL: DO NOT mark any task as done `[x]` without concrete evidence AND deep verification**
 
+### ⚠️ ANTI-HALLUCINATION PROTOCOL ⚠️
+**YOU ARE FORBIDDEN FROM:**
+- Claiming tests pass without running them
+- Marking tasks complete without actual execution
+- Imagining or predicting outcomes
+- Assuming code works without verification
+- Skipping test execution
+- Leaving broken references (cache_data, old variables)
+
+**YOU MUST:**
+- Run actual commands and read actual outputs
+- Fix all test failures before proceeding
+- Report failures honestly and immediately
+- Verify with real tool execution, not assumptions
+
 Before marking any task complete, you MUST:
 
 1. **Show proof of implementation:** Display the actual code/changes made
@@ -38,9 +53,21 @@ Before marking any task complete, you MUST:
    - **Security:** Are there any security implications?
    - **Maintainability:** Is this code maintainable?
 
-3. **Demonstrate it works:** Run the code, show output, or test results
+3. **Demonstrate it works:**
+   - **MANDATORY:** Run ALL tests (`npm test`, `pytest`, etc.)
+   - **MANDATORY:** Show the ACTUAL test output
+   - **MANDATORY:** If tests fail, FIX THEM before continuing
+   - Run the code with real inputs
+   - Show actual output, not predicted output
+   - Execute validation commands
 
-4. **Verify no errors:** Check for compilation errors, linting issues, type errors
+4. **Verify no errors:**
+   - **RUN** linting: `npm run lint` or equivalent
+   - **RUN** type checking: `npm run typecheck` or equivalent
+   - **READ** the actual output
+   - **FIX** any errors found
+   - **RE-RUN** to confirm fixes
+   - Search for broken references (undefined variables, missing imports)
 
 5. **Explain what you verified:** Explicitly state what you tested and what the results were
 
@@ -64,9 +91,19 @@ Before marking any task complete, you MUST:
 - For cleanup tasks: Run grep/search to confirm no debug statements remain
 - For cleanup tasks: Show git status to confirm only intended files are staged
 
+### ❌ FAILURE PROTOCOL
+**If tests fail or errors occur:**
+1. **STOP** - Do not mark the task complete
+2. **REPORT** - Tell the user exactly what failed
+3. **SHOW** - Display the actual error messages
+4. **FIX** - Attempt to fix the issues
+5. **VERIFY** - Re-run tests to confirm fixes
+6. **ITERATE** - Repeat until all tests pass
+
 **If you cannot provide evidence, DO NOT mark as complete.** Instead:
 - Keep the task as `[ ]`
-- Explain what's blocking verification
+- State explicitly: "Task incomplete - [specific reason]"
+- Show the actual failure/error
 - Ask the user for help if needed
 
 ## Validation Sub-Task Requirements with Deep Analysis
@@ -109,10 +146,23 @@ During validation, deeply consider:
 - ✅ Explicit statement: "All PRD requirements for [parent task] are verified and working"
 
 - **Completion protocol:**
-  1. When you finish a **sub‑task** AND have verified it works with evidence, mark it as completed by changing `[ ]` to `[x]`.
+  1. When you finish a **sub‑task**:
+     - **FIRST** run all tests and verify they pass
+     - **THEN** run linting and type checking
+     - **ONLY IF ALL PASS** mark it as completed by changing `[ ]` to `[x]`
+     - **IF ANY FAIL** keep as `[ ]` and fix the issues
   2. If **all** subtasks underneath a parent task are now `[x]`, follow this sequence:
     - **First**: Run the full test suite (`pytest`, `npm test`, `bin/rails test`, etc.)
-    - **Only if all tests pass**: Stage changes (`git add .`)
+      - **READ THE OUTPUT** - Do not assume it passed
+      - **VERIFY** every test is green/passing
+      - **FIX** any failures before proceeding
+    - **Second**: Run linting (`npm run lint`, `ruff`, etc.)
+      - **READ THE OUTPUT** - Check for any warnings/errors
+      - **FIX** all issues found
+    - **Third**: Run type checking (`npm run typecheck`, `mypy`, etc.)
+      - **READ THE OUTPUT** - Verify no type errors
+      - **FIX** any type issues
+    - **Only if ALL checks pass**: Stage changes (`git add .`)
     - **Clean up Development Artifacts**:
       1. List all temporary files created during this task
       2. Remove each temporary file with confirmation (debug scripts, research files, etc.)
@@ -154,4 +204,18 @@ When working with task lists, the AI must:
 3. Add newly discovered tasks.
 4. Keep "Relevant Files" accurate and up to date.
 5. Before starting work, check which sub‑task is next.
-6. After implementing a sub‑task, update the file and then pause for user approval.
+6. After implementing a sub‑task:
+   - Run tests to verify it works
+   - Update the task file with evidence of completion
+   - If tests fail, report the failure and fix it
+   - Then pause for user approval
+
+### 🚨 HALLUCINATION CHECK 🚨
+Before marking ANY task complete, ask yourself:
+- Did I ACTUALLY run the tests? (Not imagine/predict)
+- Did I SEE the tests pass? (Not assume)
+- Did I FIX all failures? (Not ignore)
+- Can I SHOW the evidence? (Not claim)
+- Are there NO broken references? (cache_data, undefined vars)
+
+If ANY answer is "no", DO NOT mark complete.
