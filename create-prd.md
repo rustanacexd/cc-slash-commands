@@ -3,9 +3,10 @@
 
 ## Goal
 
-To guide an AI assistant in creating a detailed Product Requirements Document (PRD) in Markdown format, based on either:
-- A command prompt (e.g., `/create-prd "user authentication feature"`)
-- The last 10 messages from chat history (when no prompt provided)
+To guide an AI assistant in creating a detailed Product Requirements Document (PRD) in Markdown format, based on (in order of priority):
+1. **Markdown file path** (e.g., `/create-prd /path/to/requirements.md`) - Reads requirements from the specified markdown file
+2. **Chat history** (e.g., `/create-prd`) - Analyzes the last 10 messages from chat history when no argument provided
+3. **Command prompt** (e.g., `/create-prd "user authentication feature"`) - Uses the provided text prompt as initial context
 
 The PRD should be clear, actionable, and suitable for a junior developer to understand and implement the feature.
 
@@ -19,9 +20,10 @@ The PRD should be clear, actionable, and suitable for a junior developer to unde
 
 ## Process
 
-1.  **Gather Context:**
-    - If command includes a prompt (e.g., `/create-prd "feature description"`), use that as the initial context
-    - If no prompt provided, analyze the last 10 messages from chat history to extract feature requirements
+1.  **Gather Context (in priority order):**
+    - **First:** Check if argument is a path to an existing markdown file (ends with .md and file exists). If yes, read and use its contents as the initial context
+    - **Second:** If no argument provided, analyze the last 10 messages from chat history to extract feature requirements
+    - **Third:** If argument is provided but not a file path, treat it as a prompt string and use that as the initial context
     - **Deep Analysis:** Think deeply about the underlying business problem, user needs, and system implications
 
 2.  **Deep Thinking (Ultrathink) Before Questions:**
@@ -96,12 +98,14 @@ Assume the primary reader of the PRD is a **junior developer**. Therefore, requi
 
 ## Command Usage
 
+- `/create-prd /path/to/requirements.md` - Reads requirements from the specified markdown file (highest priority)
 - `/create-prd` - Analyzes last 10 chat messages to extract feature context
-- `/create-prd "feature description"` - Uses the provided prompt as initial context
+- `/create-prd "feature description"` - Uses the provided prompt string as initial context (lowest priority)
 
 ## Final instructions
 
 1. Do NOT start implementing the PRD
-2. When command prompt is provided, use it as primary context (overrides chat history)
-3. Make sure to ask the user clarifying questions
-4. Take the user's answers to the clarifying questions and improve the PRD
+2. Priority order for context: markdown file > chat history > prompt string
+3. When checking for markdown file: verify it ends with .md AND file exists before reading
+4. Make sure to ask the user clarifying questions
+5. Take the user's answers to the clarifying questions and improve the PRD
