@@ -6,12 +6,9 @@ This command performs a comprehensive review of work done against a specific PRD
 
 ## Command Usage
 
-```
-/review-work prd-[feature-name].md
-```
-
-Example:
-- `/review-work prd-user-auth.md` - Reviews work against user authentication PRD
+- Run `/review-work` in Codex CLI.
+- Because Codex CLI ignores command arguments, immediately ask the user for the PRD file path (e.g., `prd-user-auth.md`).
+- Confirm the file exists in `/tasks/`; if not, collaborate with the user to locate or specify the correct file before proceeding.
 
 ## File Resolution
 
@@ -261,13 +258,13 @@ If ANY answer is "no", START OVER and do it properly.
 
 When executing this review command:
 
-1. **Parse Arguments:** Extract the PRD filename from the command arguments.
+1. **Request PRD Path:** Immediately ask the user for the PRD filename because Codex CLI does not forward command arguments.
 
 2. **File Resolution:**
-   - Use provided PRD filename as-is
-   - Derive task filename by adding `tasks-` prefix
-   - Check both files exist in `/tasks/` directory
-   - Error gracefully if files not found
+   - Use the provided PRD filename as-is once confirmed
+   - Derive the task filename by adding the `tasks-` prefix
+   - Check both files exist in the `/tasks/` directory
+   - Error gracefully if files are not found and collaborate with the user to resolve
 
 3. **Ultra-Deep Thinking:** For each item reviewed, think deeply about:
    - **Root cause analysis:** Why was it implemented this way?
@@ -320,7 +317,9 @@ When executing this review command:
 ## Example Usage
 
 ```
-User: /review-work prd-user-authentication.md
+User: /review-work
+AI: Please provide the PRD file path you want me to review (for example, `prd-user-authentication.md`).
+User: prd-user-authentication.md
 
 AI:
 I'll review the work done against the PRD for user authentication. Let me first load the PRD and corresponding task list...
