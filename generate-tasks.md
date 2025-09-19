@@ -11,9 +11,15 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 - **Location:** `/tasks/`
 - **Filename:** `tasks-[prd-file-name].md` (e.g., `tasks-prd-user-profile-editing.md`)
 
+## Invocation
+
+- Run `/generate-tasks` in Codex CLI.
+- Immediately prompt the user for the PRD markdown file path because the CLI does not pass command arguments.
+- Confirm the file exists before reading; if the user cannot supply one, gather the necessary requirements context directly from them.
+
 ## Process
 
-1.  **Receive PRD Reference:** The user points the AI to a specific PRD file
+1.  **Receive PRD Reference:** Immediately after the command starts, ask the user for the path to the PRD markdown file (since Codex CLI ignores command arguments). Verify the path exists before reading it.
 
 2.  **Deep Analysis of PRD (Ultrathink):**
     Before breaking down tasks, think deeply about:

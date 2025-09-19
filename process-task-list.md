@@ -3,6 +3,12 @@
 
 Guidelines for managing task lists in markdown files to track progress on completing a PRD
 
+## Invocation
+
+- Run `/process-task-list` in Codex CLI.
+- Immediately prompt the user for the path to the existing task list markdown file because the CLI does not pass command arguments.
+- Confirm the file exists and ends with `.md`; if the user cannot provide one, coordinate with them to identify or create the correct task list before proceeding.
+
 ## Implementation Principles
 - **Start simple:** Write the most straightforward code that works
 - **No premature optimization:** Make it work, then make it better if needed

@@ -3,10 +3,10 @@
 
 ## Goal
 
-To guide an AI assistant in creating a detailed Product Requirements Document (PRD) in Markdown format, based on (in order of priority):
-1. **Markdown file path** (e.g., `/create-prd /path/to/requirements.md`) - Reads requirements from the specified markdown file
-2. **Chat history** (e.g., `/create-prd`) - Analyzes the last 10 messages from chat history when no argument provided
-3. **Command prompt** (e.g., `/create-prd "user authentication feature"`) - Uses the provided text prompt as initial context
+To guide an AI assistant in creating a detailed Product Requirements Document (PRD) in Markdown format. Because Codex CLI does not pass command arguments through, the assistant must collect context interactively in this priority order:
+1. **User-provided markdown file** — Immediately after invocation, ask the user for the path to an existing `.md` file. If the user supplies a valid path and the file exists, read and use its contents as the initial context.
+2. **Chat history** — If the user indicates there is no file to read, analyze the last 10 messages from chat history to extract requirements.
+3. **Direct prompt** — If the user neither provides a file nor has enough recent chat context, ask them to describe the feature and use that description as the initial context.
 
 The PRD should be clear, actionable, and suitable for a junior developer to understand and implement the feature.
 
@@ -21,9 +21,9 @@ The PRD should be clear, actionable, and suitable for a junior developer to unde
 ## Process
 
 1.  **Gather Context (in priority order):**
-    - **First:** Check if argument is a path to an existing markdown file (ends with .md and file exists). If yes, read and use its contents as the initial context
-    - **Second:** If no argument provided, analyze the last 10 messages from chat history to extract feature requirements
-    - **Third:** If argument is provided but not a file path, treat it as a prompt string and use that as the initial context
+    - **First:** Immediately after the command starts, ask the user for the path to the markdown file they want to use. Confirm the path ends with `.md` and the file exists before reading it.
+    - **Second:** If the user says there is no file to read, analyze the last 10 messages from chat history to extract feature requirements.
+    - **Third:** If the user cannot supply a file and chat history is insufficient, ask them to describe the feature and treat that description as the prompt string.
     - **Deep Analysis:** Think deeply about the underlying business problem, user needs, and system implications
 
 2.  **Deep Thinking (Ultrathink) Before Questions:**
@@ -98,9 +98,9 @@ Assume the primary reader of the PRD is a **junior developer**. Therefore, requi
 
 ## Command Usage
 
-- `/create-prd /path/to/requirements.md` - Reads requirements from the specified markdown file (highest priority)
-- `/create-prd` - Analyzes last 10 chat messages to extract feature context
-- `/create-prd "feature description"` - Uses the provided prompt string as initial context (lowest priority)
+- Run `/create-prd` in Codex CLI.
+- When prompted, provide the path to the requirements markdown file so the assistant can read it.
+- If there is no file, respond accordingly so the assistant falls back to chat history or, if needed, a direct feature description.
 
 ## Final instructions
 
