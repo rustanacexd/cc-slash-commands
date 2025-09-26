@@ -17,7 +17,7 @@ Guidelines for managing task lists in markdown files to track progress on comple
 - **Use framework defaults:** Don't customize what already works
 
 ## Task Implementation with Deep Analysis
-- **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
+- **One sub-task at a time:** Finish the current sub-task before beginning the next, unless the user explicitly requests step-by-step approval
 
 ### Before Starting Each Task (Ultrathink):
 Think deeply about:
@@ -187,7 +187,7 @@ During validation, deeply consider:
         git commit -m "feat: add payment validation logic" -m "- Validates card type and expiry" -m "- Adds unit tests for edge cases" -m "Related to T123 in PRD"
         ```
   3. Once all the subtasks are marked completed and changes have been committed, mark the **parent task** as completed.
-- Stop after each sub‑task and wait for the user's go‑ahead.
+- Stop after each sub-task only if the user has asked for step-by-step confirmation.
 
 ## Task List Maintenance
 
@@ -214,7 +214,7 @@ When working with task lists, the AI must:
    - Run tests to verify it works
    - Update the task file with evidence of completion
    - If tests fail, report the failure and fix it
-   - Then pause for user approval
+   - Pause for user approval only when the user has asked for it
 
 ### 🚨 HALLUCINATION CHECK 🚨
 Before marking ANY task complete, ask yourself:
