@@ -1,34 +1,34 @@
-# Rule: Generating a Bug Brief
-# Purpose: Template for producing an evidence-backed bug brief that enables reliable reproduction and triage
+# Rule: Generating an Issue Brief
+# Purpose: Template for producing an evidence-backed issue brief that enables reliable reproduction and triage
 
 ## Goal
 
-Guide the assistant to capture complete diagnostic context for a reported defect so engineers can reproduce, investigate, and prioritize the bug efficiently.
+Guide the assistant to capture complete diagnostic context for a reported defect so engineers can reproduce, investigate, and prioritize the issue efficiently.
 
 ## Output
 
 - **Format:** Markdown (`.md`)
-- **Location:** `/bugs/`
-- **Filename:** `bug-brief-[short-slug].md` (e.g., `bug-brief-checkout-timeout.md`)
+- **Location:** `/issues/`
+- **Filename:** `issue-brief-[short-slug].md` (e.g., `issue-brief-checkout-timeout.md`)
 
 ## Invocation
 
-- Run `/create-bug-brief` in Codex CLI.
-- Immediately prompt the user for the path to an existing bug brief markdown file because the CLI does not pass command arguments.
-- Confirm the file exists and ends with `.md`; if unavailable, gather the bug report facts interactively before proceeding.
+- Run `/create-issue-brief` in Codex CLI.
+- Immediately prompt the user for the path to an existing issue brief markdown file because the CLI does not pass command arguments.
+- Confirm the file exists and ends with `.md`; if unavailable, gather the issue report facts interactively before proceeding.
 
 ## Process
 
 1. **Gather Context (Priority Order):**
-   1. Ask the user for the path to a bug report markdown file, verify it ends with `.md`, and read it if present.
-   2. If no file exists, review the last 10 chat messages to extract bug details.
+   1. Ask the user for the path to an issue report markdown file, verify it ends with `.md`, and read it if present.
+   2. If no file exists, review the last 10 chat messages to extract issue details.
    3. If the chat lacks sufficient data, interview the user for the full report.
 
 2. **Deep Pre-Question Analysis (Ultrathink):** Before asking clarifying questions, think deeply about:
    - Impact blast radius (users, systems, financial risk)
    - Preconditions that may trigger the issue
    - Environment-specific dependencies (browsers, OS, regions)
-   - Historical regressions or similar bugs
+   - Historical regressions or similar issues
    - Required telemetry or logs to gather
    - Potential data integrity or security implications
    - Urgency indicators (frequency, revenue loss, compliance risk)
@@ -50,13 +50,13 @@ Guide the assistant to capture complete diagnostic context for a reported defect
    - Flag security, privacy, or compliance risks needing escalation
    - Note required access (feature flags, admin roles, VPN) for engineers
 
-5. **Construct the Bug Brief:** Populate the sections below:
+5. **Construct the Issue Brief:** Populate the sections below:
 
 ```markdown
-# Bug Brief: [Slug/Title]
+# Issue Brief: [Slug/Title]
 
 ## Summary
-- Concise description of the bug and its business impact
+- Concise description of the issue and its business impact
 
 ## Impact Assessment
 - Severity (Critical / High / Medium / Low)
@@ -110,16 +110,16 @@ Guide the assistant to capture complete diagnostic context for a reported defect
    - Highlight any blockers preventing engineers from starting work (missing access, tooling)
 
 7. **Save Output:**
-   - Ensure `/bugs/` exists; instruct the user to create it if absent
-   - Save the bug brief using the naming format above
+   - Ensure `/issues/` exists; instruct the user to create it if absent
+   - Save the issue brief using the naming format above
    - Notify the user of the saved path and remind them to share attachments securely (not embedded if confidential)
 
 ## Target Audience
 
-Assume the primary reader is a **triage engineer or on-call responder** who needs to reproduce and prioritize the bug quickly. The brief must be explicit, verifiable, and include direct evidence where possible.
+Assume the primary reader is a **triage engineer or on-call responder** who needs to reproduce and prioritize the issue quickly. The brief must be explicit, verifiable, and include direct evidence where possible.
 
 ## Final Instructions
 
-- Do NOT attempt to fix the bug here; focus solely on capturing reproducible context
+- Do NOT attempt to fix the issue here; focus solely on capturing reproducible context
 - If information is missing, clearly mark the gaps and request follow-up
 - Encourage reporters to re-validate reproduction after clarifications are gathered
